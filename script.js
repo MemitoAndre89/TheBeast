@@ -1,19 +1,12 @@
-function play(playerChoice) {
-    const choices = ['rock', 'paper', 'scissors'];
-    const computerChoice = choices[Math.floor(Math.random() * 3)];
-    let result = '';
+const numberToGuess = Math.floor(Math.random() * 10) + 1;
 
-    if (playerChoice === computerChoice) {
-        result = `It's a draw! Both chose ${playerChoice}.`;
-    } else if (
-        (playerChoice === 'rock' && computerChoice === 'scissors') ||
-        (playerChoice === 'scissors' && computerChoice === 'paper') ||
-        (playerChoice === 'paper' && computerChoice === 'rock')
-    ) {
-        result = `You win! ${playerChoice} beats ${computerChoice}.`;
+function checkGuess() {
+    const userGuess = parseInt(document.getElementById('guess').value);
+    const resultElement = document.getElementById('result');
+
+    if (userGuess === numberToGuess) {
+        resultElement.innerText = 'Congratulations! You guessed correctly!';
     } else {
-        result = `You lose! ${computerChoice} beats ${playerChoice}.`;
+        resultElement.innerText = `Sorry, that's not correct. The number was ${numberToGuess}.`;
     }
-
-    document.getElementById('result').innerText = result;
 }
